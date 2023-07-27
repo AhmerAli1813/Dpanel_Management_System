@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Dpanel_Management_System
 {
-    public partial class MainDashboard : Form
+    public partial class Dashboard : Form
     {
         private Model.Dashboard model;
         private Button currentBtn ;
-        public MainDashboard()
+        public Dashboard()
         {
             InitializeComponent();
             //Defualt 7 Days

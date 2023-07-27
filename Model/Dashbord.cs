@@ -1,4 +1,5 @@
 ﻿using Dpanel_Management_System.Db;
+using ivs.system;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +41,7 @@ namespace Dpanel_Management_System.Model
         //Private Methods
         private void GetNumbersItems()
         {
-            using (var connection = GetConnection())
+            using (var connection = GetConnection() )
             {
                 connection.Open();
                 using (var command = new SqlCommand())
@@ -76,7 +77,7 @@ namespace Dpanel_Management_System.Model
             GrossRevenueList = new List<RevenuebyDate>();
             TotalProfit = 0;
             TotalRevenue = 0;
-            using (var connection = GetConnection())
+            using (var connection = GetConnection() )
             {
                 connection.Open();
                 SqlDataReader reader;
@@ -165,7 +166,7 @@ namespace Dpanel_Management_System.Model
         {
             TopProductsList = new List<KeyValuePair<int, int>>();
             UnderStockList = new List<KeyValuePair<string, int>>();
-            using (var connection = GetConnection())
+            using (var connection = GetConnection() )
             {
                 connection.Open();
                 SqlDataReader reader;
@@ -192,10 +193,10 @@ namespace Dpanel_Management_System.Model
                     reader.Close();
 
                     //Get Stock 
-                    command.CommandText = @"select p.product_name , s.quantity from production.stocks as s
-                                        join production.products as p on s.product_id = p.product_id
-                                        where s.quantity >=10 ";
-                    reader = command.ExecuteReader();
+                    command.CommandText = @"select  p.product_name , s.quantity from production.stocks as s
+                                            join production.products as p on s.product_id = p.product_id
+                                            where s.quantity >=10 order by s.quantity desc ";
+                       reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
