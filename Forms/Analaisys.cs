@@ -1,6 +1,4 @@
-﻿using Dpanel_Management_System.Forms;
-using Dpanel_Management_System.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,22 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Dpanel_Management_System
+namespace Dpanel_Management_System.Forms
 {
-    public partial class Dashboard : Form
+    public partial class Analaisys : Sample
     {
+
         private Model.Dashboard model;
-        private Button currentBtn ;
-        public Dashboard()
+        private Button currentBtn;
+        public Analaisys()
         {
             InitializeComponent();
-            //Defualt 7 Days
-            
             model = new Model.Dashboard();
-            
-
         }
 
+        private void Analaisys_Load(object sender, EventArgs e)
+        {
+            SetDateMenuBtnsUI(Last7DaysBtn);
+            StartdatePicker.Value = DateTime.Today.AddDays(-7);
+            enddatePicker.Value = DateTime.Now;
+            Last7DaysBtn.Select();
+            loadData();
+        }
         private void loadData()
         {
             var refreshData = model.LoadData(StartdatePicker.Value, enddatePicker.Value);
@@ -63,16 +66,7 @@ namespace Dpanel_Management_System
             }
         }
 
-
-        private void MainDashboard_Load(object sender, EventArgs e)
-        {
-            SetDateMenuBtnsUI(Last7DaysBtn);
-            StartdatePicker.Value = DateTime.Today.AddDays(-7);
-            enddatePicker.Value = DateTime.Now;
-            Last7DaysBtn.Select();
-            loadData();
-
-        }
+        
         private void SetDateMenuBtnsUI(object button)
         {
             var btn = (Button)button;
@@ -104,13 +98,15 @@ namespace Dpanel_Management_System
 
         }
 
-        private void TodayDateBtn_Click(object sender, EventArgs e)
+        private void TodayBtn_Click(object sender, EventArgs e)
         {
+            StartdatePicker.Value = DateTime.Today;
+            enddatePicker.Value = DateTime.Now;
+
             loadData();
             SetDateMenuBtnsUI(sender);
         }
 
-        
         private void CustomDateBtn_Click(object sender, EventArgs e)
         {
 
@@ -132,7 +128,7 @@ namespace Dpanel_Management_System
         private void last30DaysBtn_Click(object sender, EventArgs e)
         {
 
-            StartdatePicker.Value = new DateTime(DateTime.Today.Year,DateTime.Today.Month,1);
+            StartdatePicker.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             enddatePicker.Value = DateTime.Now;
             loadData();
             SetDateMenuBtnsUI(sender);
@@ -159,8 +155,8 @@ namespace Dpanel_Management_System
         private void enddatePickerLbl_Click(object sender, EventArgs e)
         {
             {
-            if (currentBtn == CustomDateBtn)
-                enddatePicker.Select();
+                if (currentBtn == CustomDateBtn)
+                    enddatePicker.Select();
                 SendKeys.Send("%{DOWN}");
             }
         }
@@ -179,5 +175,6 @@ namespace Dpanel_Management_System
         {
             loadData();
         }
+
     }
 }

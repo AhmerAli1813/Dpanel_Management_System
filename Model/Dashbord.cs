@@ -137,7 +137,7 @@ namespace Dpanel_Management_System.Model
                     {
                         bool IsYear = numberDays <= 365 ? true : false;
                         GrossRevenueList = (from orderList in tableResult
-                                            group orderList by orderList.Key.ToString("MMM-YYYY")
+                                            group orderList by orderList.Key.ToString("MMM-yyy")
                                             into OrdersDD
                                             select new RevenuebyDate
                                             {
@@ -150,7 +150,7 @@ namespace Dpanel_Management_System.Model
                     {
 
                         GrossRevenueList = (from orderList in tableResult
-                                            group orderList by orderList.Key.ToString("YYYY")
+                                            group orderList by orderList.Key.ToString("yyyy")
                                             into OrdersDD
                                             select new RevenuebyDate
                                             {
