@@ -17,7 +17,7 @@ namespace Dpanel_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Mdi());
+            Application.Run(new MDI());
         }
     }
 }

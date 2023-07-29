@@ -176,5 +176,9 @@ namespace Dpanel_Management_System.Forms
             loadData();
         }
 
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

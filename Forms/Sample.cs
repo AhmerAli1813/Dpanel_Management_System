@@ -33,13 +33,41 @@ namespace Dpanel_Management_System.Forms
 
         private void DashboardBtn_Click(object sender, EventArgs e)
         {
-            Analaisys win = new Analaisys();
-            Mainclass.showWindow(win, this, Mdi.ActiveForm);
+            Dashborad win = new Dashborad();
+            Mainclass.showWindow(win, this, MDI.ActiveForm);
         }
 
-        private void Closebtn_Click(object sender, EventArgs e)
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void SerachTxtBoxLbl_Click(object sender, EventArgs e)
+        {
+            SerachTxtBox.Select();
+
+        }
+        
+        private void SerachTxtBox_TextChanged(object sender, EventArgs e)
         {
             
+            if (SerachTxtBox.Text == null)
+            {
+                
+                SerachTxtBoxLbl.Text ="Serach here..." ;
+            }
+            else
+            {
+                SerachTxtBoxLbl.Text = SerachTxtBox.Text;
+            }
+        }
+
+
+        private void AnalaisysBtn_Click(object sender, EventArgs e)
+        {
+
+            Analaisys win = new Analaisys();
+            Mainclass.showWindow(win, this, MDI.ActiveForm);
         }
     }
 }

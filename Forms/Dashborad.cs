@@ -1,5 +1,4 @@
-﻿using ivs.system;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,17 +10,19 @@ using System.Windows.Forms;
 
 namespace Dpanel_Management_System.Forms
 {
-    public partial class MDI : Form
+    public partial class Dashborad : Sample
+
+
     {
-        public MDI()
+        public Dashborad()
         {
             InitializeComponent();
         }
 
-        private void Mdi_Load(object sender, EventArgs e)
+        private void Dashborad_Load(object sender, EventArgs e)
         {
-            Sample s = new Sample();
-            Mainclass.showWindow(s, this);
+
         }
+
     }
 }

@@ -193,7 +193,7 @@ namespace Dpanel_Management_System.Model
                     reader.Close();
 
                     //Get Stock 
-                    command.CommandText = @"select  p.product_name , s.quantity from production.stocks as s
+                    command.CommandText = @"select top 5  p.product_name , s.quantity from production.stocks as s
                                             join production.products as p on s.product_id = p.product_id
                                             where s.quantity >=10 order by s.quantity desc ";
                        reader = command.ExecuteReader();
